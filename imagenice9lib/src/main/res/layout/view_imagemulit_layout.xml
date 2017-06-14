@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:fillViewport="true"
+              android:descendantFocusability="blocksDescendants"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:descendantFocusability="blocksDescendants"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/drag_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            />
+
+        <TextView
+            android:id="@+id/drag_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:lineSpacingExtra="3dp"
+            android:lineSpacingMultiplier="1.2"
+            android:paddingBottom="35px"
+            android:paddingLeft="65px"
+            android:paddingRight="65px"
+            android:paddingTop="35px"
+            android:text="长按图片变换顺序"
+            android:textSize="24sp"
+            android:visibility="visible"/>
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="Pictures">
+        <item>https://cdn.pixabay.com/photo/2015/05/22/05/52/cat-778315__480.jpg</item>
+        <item>https://cdn.pixabay.com/photo/2012/11/26/13/58/cat-67345__480.jpg</item>
+        <item>https://cdn.pixabay.com/photo/2013/11/08/21/12/cat-207583__480.jpg</item>
+        <item>https://cdn.pixabay.com/photo/2015/03/27/13/16/cat-694730__480.jpg</item>
+        <item>https://cdn.pixabay.com/photo/2012/09/11/22/49/cat-56753__480.jpg</item>
+        <item>https://cdn.pixabay.com/photo/2013/09/29/12/38/cat-188088__480.jpg</item>
+        <item>https://cdn.pixabay.com/photo/2016/07/10/21/47/cat-1508613__480.jpg</item>
+        <item>https://cdn.pixabay.com/photo/2013/05/30/18/21/tabby-114782__480.jpg</item>
+        <item>https://cdn.pixabay.com/photo/2014/01/17/14/53/cat-246933__480.jpg</item>
+    </string-array>
+</resources>
