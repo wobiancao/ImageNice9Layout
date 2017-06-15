@@ -1,4 +1,4 @@
-####写在开头：
+#写在开头：
 为什么要实现这么个功能，当然不是我闲得慌，当然是产品的需求。身为码农你只能想方设法去实现，即使留给你的时间已经不多了，想起一句话：这个需求很简单，怎么实现我不管，月底上线
 ![警察.png](http://upload-images.jianshu.io/upload_images/1216032-680fc083ad9d4b8a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ####看看产品需要的什么吧
@@ -21,7 +21,7 @@
 然后，大话说出去了，解决呗。猫：然而事情并没有这么简单
 
 ![coder.png](http://upload-images.jianshu.io/upload_images/1216032-327f757b2353fdbc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-####实现步骤Or踩坑过程
+##实现步骤Or踩坑过程
 首先，时间上，规定时间需要上线版本，这个布局留给我的时间有且仅有充裕的1天，对于实现过类似功能的人来说，一天确实很充裕；
 其次，功能上，逻辑并不复杂，条理也很清晰，就是9张图，9种排列方式，用到的地方两处：1）.发布的时候需要拖拽，2）显示详情的时候需要展示，不能拖拽；
 方案有：1.写9种静态布局，2.addview的方式动态添加布局，3.万能的recyclerView
@@ -37,7 +37,8 @@
 [vlayout](https://github.com/alibaba/vlayout)
 找到以上库的时候，半天已经过去，只剩下半天“充裕”的时间了
 ![fuck.png](http://upload-images.jianshu.io/upload_images/1216032-9c577e3dc55809bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-当时导入two-way库的时候出现了问题，一直build不起，只好选择vlayout，毕竟时间不等人；上面的demo.gif是用vlayout实现的;后面我试了two-way库，也实现了这个效果，喜欢的朋友可以去试试
+当时导入two-way库的时候出现了问题，一直build不起，只好选择vlayout，毕竟时间不等人；
+上面的demo.gif是用vlayout实现的;后面我试了two-way库，也实现了这个效果，喜欢的朋友可以去试试
 
 
 贴上最终实现效果：
@@ -45,8 +46,8 @@
 ![列表.gif](https://github.com/wobiancao/ImageNice9Layout/blob/master/screenshot/list9.gif)
 
 ![拖拽.gif](https://github.com/wobiancao/ImageNice9Layout/blob/master/screenshot/drag9.gif)
-拖拽动画不是很理想，希望有小伙伴能提点意见怎么修改这个拖拽动画，我简单的把这个控件封装了一下，便于以后使用
-####使用方法
+ 拖拽动画不是很理想，希望有小伙伴能提点意见怎么修改这个拖拽动画，我简单的把这个控件封装了一下，便于以后使用
+##使用方法
 1.git clone 或下载本控件，修改响应版本然后依赖
   `compile project(':imagenice9lib')`
 2.属性：
