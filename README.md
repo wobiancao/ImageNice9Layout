@@ -10,9 +10,13 @@
 
 效果图太多就不杀猫了，直接上之前实现的demo效果图吧
 
+
 ![demo.gif](http://upload-images.jianshu.io/upload_images/1216032-cf847b6bce96d784.gif?imageMogr2/auto-orient/strip)
 
+
 >分析Or撕逼
+
+
 初一看，恩9种样式，宫格布局的，这个应该很简单，还要实现拖拽，
 RecyclerView + GridLayoutManager设置spanSize + ItemTouchHelper 一波带走；
 再一看，我擦这3张的和6张的怎么这么是这样的？
@@ -29,15 +33,22 @@ RecyclerView + GridLayoutManager设置spanSize + ItemTouchHelper 一波带走；
 
 ![coder.png](http://upload-images.jianshu.io/upload_images/1216032-327f757b2353fdbc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 >实现步骤Or踩坑过程
+
+
 首先，时间上，规定时间需要上线版本，这个布局留给我的时间有且仅有充裕的1天，对于实现过类似功能的人来说，一天确实很充裕；
 
 其次，功能上，逻辑并不复杂，条理也很清晰，就是9张图，9种排列方式，用到的地方两处：
+
 1）.发布的时候需要拖拽，
+
 2）显示详情的时候需要展示，不能拖拽；
 
 方案有：
+
 1.写9种静态布局;
+
 2.addview的方式动态添加布局;
+
 3.万能的recyclerView
 
 最后排除1、2方案，采用方案3
@@ -57,6 +68,7 @@ RecyclerView + GridLayoutManager设置spanSize + ItemTouchHelper 一波带走；
 然后又找到两个关于自定义recyclerview的库
 
 [two-way](https://github.com/lucasr/twoway-view)
+
 [vlayout](https://github.com/alibaba/vlayout)
 
 找到以上库的时候，半天已经过去，只剩下半天“充裕”的时间了
@@ -67,7 +79,7 @@ RecyclerView + GridLayoutManager设置spanSize + ItemTouchHelper 一波带走；
 
 上面的demo.gif是用vlayout实现的;后面我试了two-way库，也实现了这个效果，喜欢的朋友可以去试试
 
-贴上最终实现效果：
+>贴上最终实现效果：
 
 ![列表.gif](https://github.com/wobiancao/ImageNice9Layout/blob/master/screenshot/list9.gif)
 
