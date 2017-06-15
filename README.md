@@ -121,9 +121,8 @@ RecyclerView + GridLayoutManager设置spanSize + ItemTouchHelper 一波带走；
         app:nice9_candrag="false"/>`
 				
 
->GitHub
 
-[ImageNice9Layout](https://github.com/wobiancao/ImageNice9Layout)
+[简书地址](http://www.jianshu.com/p/0ea96b952170)
 
 如果觉得本文或本库对您有所帮助，就点个star吧？
 
