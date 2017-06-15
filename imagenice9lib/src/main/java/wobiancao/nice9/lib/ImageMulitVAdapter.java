@@ -24,12 +24,31 @@ public class ImageMulitVAdapter extends VirtualLayoutAdapter<ImageMulitVAdapter.
     private List<String> pictures = new ArrayList<>();
     private Context context;
     private boolean canDrag;
+    private int itemMargin;
+    private ImageNice9Layout.ItemDelegate mItemDelegate;
+//    public ImageMulitVAdapter(@NonNull VirtualLayoutManager layoutManager, List<String> pictures, Context context, boolean canDrag, int itemMagrin) {
+//        super(layoutManager);
+//        this.pictures = pictures;
+//        this.context = context;
+//        this.canDrag = canDrag;
+//        this.itemMargin = itemMagrin;
+//    }
 
-    public ImageMulitVAdapter(@NonNull VirtualLayoutManager layoutManager, List<String> pictures, Context context, boolean canDrag) {
+
+    public ImageMulitVAdapter(@NonNull VirtualLayoutManager layoutManager, Context context, boolean canDrag, int itemMargin) {
         super(layoutManager);
-        this.pictures = pictures;
         this.context = context;
         this.canDrag = canDrag;
+        this.itemMargin = itemMargin;
+    }
+
+    public void bindData(List<String> pictures){
+        this.pictures = pictures;
+        notifyDataSetChanged();
+    }
+
+    public void setItemDelegate(ImageNice9Layout.ItemDelegate itemDelegate) {
+        mItemDelegate = itemDelegate;
     }
 
     @Override
@@ -38,7 +57,7 @@ public class ImageMulitVAdapter extends VirtualLayoutAdapter<ImageMulitVAdapter.
     }
 
     @Override
-    public void onBindViewHolder(ImageViewHolder holder, int position) {
+    public void onBindViewHolder(ImageViewHolder holder, final int position) {
         VirtualLayoutManager.LayoutParams layoutParams = new VirtualLayoutManager.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         int width = 0, height = 0;
         int imageCount = pictures.size();
@@ -53,14 +72,14 @@ public class ImageMulitVAdapter extends VirtualLayoutAdapter<ImageMulitVAdapter.
             if (position == 0) {
                 width = (int) (displayW * 0.66);
                 height = width;
-                layoutParams.rightMargin = 10;
-                layoutParams.bottomMargin = 10;
+                layoutParams.rightMargin = itemMargin;
+                layoutParams.bottomMargin = itemMargin;
             } else {
                 if (position == 1 || position == 2) {
                     if (position == 1) {
-                        layoutParams.bottomMargin = 5;
+                        layoutParams.bottomMargin = itemMargin / 2;
                     } else {
-                        layoutParams.bottomMargin = 10;
+                        layoutParams.bottomMargin = itemMargin;
                     }
                 }
                 width = (int) ((displayW * 0.33));
@@ -91,9 +110,9 @@ public class ImageMulitVAdapter extends VirtualLayoutAdapter<ImageMulitVAdapter.
             } else {
                 if (position == 1 || position == 2) {
                     if (position == 1) {
-                        layoutParams.bottomMargin = 5;
+                        layoutParams.bottomMargin = itemMargin / 2;
                     } else {
-                        layoutParams.bottomMargin = 10;
+                        layoutParams.bottomMargin = itemMargin;
                     }
 
                 }
@@ -123,7 +142,18 @@ public class ImageMulitVAdapter extends VirtualLayoutAdapter<ImageMulitVAdapter.
         layoutParams.width = width;
         layoutParams.height = height;
         holder.itemView.setLayoutParams(layoutParams);
-        String imageUrl = pictures.get(position);
+
+        final String imageUrl = pictures.get(position);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!canDrag) {
+                    if (mItemDelegate != null){
+                        mItemDelegate.onItemClick(position);
+                    }
+                }
+            }
+        });
         Glide.with(context)
                 .load(imageUrl)
                 .centerCrop()

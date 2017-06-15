@@ -146,7 +146,7 @@ public class ImageNice9Layout extends LinearLayout implements MyItemTouchCallbac
     private boolean canDrag = false;
     private Context mContext;
     private boolean isShowTip = false;
-
+    private int itemMargin = 10;
     public ImageNice9Layout(Context context) {
         this(context, null);
     }
@@ -164,11 +164,15 @@ public class ImageNice9Layout extends LinearLayout implements MyItemTouchCallbac
             initAttr(typedArray.getIndex(i), typedArray);
         }
         typedArray.recycle();
+        mMulitVAdapter = new ImageMulitVAdapter(layoutManager, mContext, canDrag, itemMargin);
     }
 
     private void initAttr(int attr, TypedArray typedArray) {
         if (attr == R.styleable.ImageNice9Layout_nice9_candrag) {
             canDrag = typedArray.getBoolean(attr, false);
+        }
+        if (attr == R.styleable.ImageNice9Layout_nice9_itemMargin) {
+            itemMargin = (int) typedArray.getDimension(attr, 5);
         }
     }
 
@@ -183,6 +187,10 @@ public class ImageNice9Layout extends LinearLayout implements MyItemTouchCallbac
         mRecycler.setNestedScrollingEnabled(false);
     }
 
+    public void setItemDelegate(ItemDelegate itemDelegate) {
+        mMulitVAdapter.setItemDelegate(itemDelegate);
+    }
+
     public void setCanDrag(boolean canDrag) {
         this.canDrag = canDrag;
     }
@@ -192,8 +200,8 @@ public class ImageNice9Layout extends LinearLayout implements MyItemTouchCallbac
         if (pictures != null) {
             helpers = new LinkedList<>();
             gridLayoutHelper = new GridLayoutHelper(6);
-            gridLayoutHelper.setGap(10);
-            gridLayoutHelper.setHGap(10);
+            gridLayoutHelper.setGap(itemMargin);
+            gridLayoutHelper.setHGap(itemMargin);
             onePlusHelper = new OnePlusNLayoutHelper(3);
             mTip.setVisibility(canDrag ? VISIBLE : INVISIBLE);
             final int num = pictures.size();
@@ -206,17 +214,17 @@ public class ImageNice9Layout extends LinearLayout implements MyItemTouchCallbac
             } else if (num == 2) {
                 height = (int) (displayW * 0.5);
             } else if (num == 3) {
-                height = (int) (displayW * 0.66) - 15;
+                height = (int) (displayW * 0.66) - itemMargin - itemMargin / 2;
             } else if (num == 4) {
-                height = (int) (displayW * 0.5) + 10 + (int) (displayW * 0.33);
+                height = (int) (displayW * 0.5) + itemMargin + (int) (displayW * 0.33);
             } else if (num == 5) {
-                height = (int) (displayW * 0.5) + 10 + (int) (displayW * 0.33);
+                height = (int) (displayW * 0.5) + itemMargin + (int) (displayW * 0.33);
             } else if (num == 6) {
-                height = (int) (displayW * 0.66) + (int) (displayW * 0.33) - 5;
+                height = (int) (displayW * 0.66) + (int) (displayW * 0.33) - itemMargin / 2;
             } else if (num == 7 || num == 8) {
-                height = (int) (displayW * 0.5) + 2 * 10 + (int) (displayW * 0.33) * 2;
+                height = (int) (displayW * 0.5) + 2 * itemMargin + (int) (displayW * 0.33) * 2;
             } else {
-                height = (int) ((displayW * 0.33) * 3 + 3 * 10 - 5);
+                height = (int) ((displayW * 0.33) * 3 + 3 * itemMargin - itemMargin / 2);
             }
             layoutParams.height = height;
             mRecycler.setLayoutParams(layoutParams);
@@ -275,7 +283,7 @@ public class ImageNice9Layout extends LinearLayout implements MyItemTouchCallbac
                 helpers.add(gridLayoutHelper);
             }
             layoutManager.setLayoutHelpers(helpers);
-            mMulitVAdapter = new ImageMulitVAdapter(layoutManager, pictures, mContext, canDrag);
+            mMulitVAdapter.bindData(pictures);
             mRecycler.setAdapter(mMulitVAdapter);
             if (canDrag) {
                 if (!isShowTip && pictures.size() > 1) {
@@ -306,8 +314,11 @@ public class ImageNice9Layout extends LinearLayout implements MyItemTouchCallbac
 
     @Override
     public void onFinishDrag() {
-        bindData(mMulitVAdapter.getPictures());
+        mMulitVAdapter.notifyDataSetChanged();
     }
 
+    public interface ItemDelegate{
+        void onItemClick(int position);
+    }
 
 }

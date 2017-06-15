@@ -26,12 +26,14 @@
             android:gravity="center"
             android:lineSpacingExtra="3dp"
             android:lineSpacingMultiplier="1.2"
+            android:background="#40000000"
             android:paddingBottom="35px"
             android:paddingLeft="65px"
             android:paddingRight="65px"
             android:paddingTop="35px"
             android:text="长按图片变换顺序"
             android:textSize="24sp"
+            android:textColor="#ffffff"
             android:visibility="visible"/>
     </RelativeLayout>
 </LinearLayout>

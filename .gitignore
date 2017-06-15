@@ -5,4 +5,4 @@
 .DS_Store
 /captures
 .externalNativeBuild
-*build
+*/build

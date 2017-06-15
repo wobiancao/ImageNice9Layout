@@ -68,13 +68,12 @@ public class MyItemTouchCallback extends ItemTouchHelper.Callback {
 
     @Override
     public void onChildDraw(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
-//在左右滑动时，让item的透明度随着移动而改变，并缩放
-        float alpha = 0.6f;
-        if (actionState == ItemTouchHelper.ACTION_STATE_DRAG) {
+        //在左右滑动时，让item的透明度随着移动而改变，并缩放
+        float alpha = 1 - Math.abs(dX) / viewHolder.itemView.getWidth();
+        if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
             viewHolder.itemView.setAlpha(alpha);
             viewHolder.itemView.setScaleX(alpha);
             viewHolder.itemView.setScaleY(alpha);
-
         }
         //防止item复用出现问题，如果大家不理解下面这段代码，可以自行注释效果，
         if (alpha <= 0) {
@@ -84,38 +83,11 @@ public class MyItemTouchCallback extends ItemTouchHelper.Callback {
 
         }
         super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
-
-//        if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
-//            //滑动时改变Item的透明度
-//            final float alpha = 1 - Math.abs(dX) / (float) viewHolder.itemView.getWidth();
-//            viewHolder.itemView.setAlpha(alpha);
-//            viewHolder.itemView.setTranslationX(dX);
-//        } else {
-//            super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
-//        }
-        //这句代码就是item拖拽和滑动效果的实现，所以这句不能省略
-//        super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
-//
-//        //我们只需要在左右滑动时，将透明度和高度的值变小（1 --> 0）
-//
-//        if (actionState == ItemTouchHelper.ACTION_STATE_DRAG) {
-//            float value = 1 - Math.abs(dX) / viewHolder.itemView.getWidth();
-//            viewHolder.itemView.setAlpha(value);
-//            viewHolder.itemView.setScaleY(value);
-//        }
     }
 
     @Override
     public void onSelectedChanged(RecyclerView.ViewHolder viewHolder, int actionState) {
         if (actionState != ItemTouchHelper.ACTION_STATE_IDLE) {
-            if (background == null && bkcolor == -1) {
-                Drawable drawable = viewHolder.itemView.getBackground();
-                if (drawable == null) {
-                    bkcolor = 0;
-                } else {
-                    background = drawable;
-                }
-            }
             viewHolder.itemView.setBackgroundColor(Color.LTGRAY);
         }
         super.onSelectedChanged(viewHolder, actionState);
