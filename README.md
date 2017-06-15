@@ -1,6 +1,7 @@
 >写在开头：
 
 为什么要实现这么个功能，当然不是我闲得慌，当然是产品的需求。身为码农你只能想方设法去实现，即使留给你的时间已经不多了，想起一句话：这个需求很简单，怎么实现我不管，月底上线
+
 ![警察.png](http://upload-images.jianshu.io/upload_images/1216032-680fc083ad9d4b8a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 >看看产品需要的什么吧
@@ -104,12 +105,19 @@ RecyclerView + GridLayoutManager设置spanSize + ItemTouchHelper 一波带走；
 4.使用，直接xml布局就行：
 
   ` <wobiancao.nice9.lib.ImageNice9Layout
+  
         android:id="@+id/item_nice9_image"
+	
         android:orientation="vertical"
+	
         android:layout_width="match_parent"
+	
         android:layout_height="wrap_content"
+	
         android:layout_marginTop="8dp"
+	
         app:nice9_itemMargin="5dp"
+	
         app:nice9_candrag="false"/>`
 				
 
