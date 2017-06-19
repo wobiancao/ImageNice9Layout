@@ -2,7 +2,11 @@ package wobiancao.nice9.lib;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.AttributeSet;
@@ -174,6 +178,40 @@ public class ImageNice9Layout extends LinearLayout implements MyItemTouchCallbac
         if (attr == R.styleable.ImageNice9Layout_nice9_itemMargin) {
             itemMargin = (int) typedArray.getDimension(attr, 5);
         }
+        if (attr == R.styleable.ImageNice9Layout_nice9_tipText){
+            setTipText(typedArray.getString(attr));
+        }
+        if (attr == R.styleable.ImageNice9Layout_nice9_tipColor){
+            setTipColor(typedArray.getColor(attr, Color.parseColor("#ffffff")));
+        }
+        if (attr == R.styleable.ImageNice9Layout_nice9_tipBgColor){
+            setTipBgColor(typedArray.getColor(attr, Color.parseColor("#40000000")));
+        }
+        if (attr == R.styleable.ImageNice9Layout_nice9_tipBgDrawable){
+            setTipBgDrawable(typedArray.getDrawable(attr));
+        }
+    }
+
+    public void setTipBgDrawable(Drawable tipBgDrawable){
+        mTip.setBackground(tipBgDrawable);
+    }
+
+    public void setTipColor(int tipBgColor) {
+        mTip.setTextColor(tipBgColor);
+    }
+
+
+    public void setTipBgColor(int tipBgColor) {
+        mTip.setBackgroundColor(tipBgColor);
+    }
+
+
+    public void setTipText(String string){
+        mTip.setText(string);
+    }
+
+    public void setTipText(@StringRes int string){
+        setTipText(getResources().getString(string));
     }
 
     private void initView(Context context) {
@@ -312,10 +350,16 @@ public class ImageNice9Layout extends LinearLayout implements MyItemTouchCallbac
 
     }
 
+    public List<String> getAfterPicList(){
+       return mMulitVAdapter.getPictures();
+    }
+
     @Override
     public void onFinishDrag() {
         mMulitVAdapter.notifyDataSetChanged();
     }
+
+
 
     public interface ItemDelegate{
         void onItemClick(int position);

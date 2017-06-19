@@ -42,5 +42,7 @@
         android:layout_height="match_parent"
         android:layout_marginTop="20dp"
         app:nice9_candrag="true"
+        app:nice9_tipColor="#456778"
+        app:nice9_tipText="新的风暴已经降临"
         android:orientation="vertical"/>
 </LinearLayout>
