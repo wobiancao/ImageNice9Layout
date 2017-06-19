@@ -151,6 +151,7 @@ public class ImageNice9Layout extends LinearLayout implements MyItemTouchCallbac
     private Context mContext;
     private boolean isShowTip = false;
     private int itemMargin = 10;
+
     public ImageNice9Layout(Context context) {
         this(context, null);
     }
@@ -178,39 +179,49 @@ public class ImageNice9Layout extends LinearLayout implements MyItemTouchCallbac
         if (attr == R.styleable.ImageNice9Layout_nice9_itemMargin) {
             itemMargin = (int) typedArray.getDimension(attr, 5);
         }
-        if (attr == R.styleable.ImageNice9Layout_nice9_tipText){
+        if (attr == R.styleable.ImageNice9Layout_nice9_tipText) {
             setTipText(typedArray.getString(attr));
         }
-        if (attr == R.styleable.ImageNice9Layout_nice9_tipColor){
+        if (attr == R.styleable.ImageNice9Layout_nice9_tipColor) {
             setTipColor(typedArray.getColor(attr, Color.parseColor("#ffffff")));
         }
-        if (attr == R.styleable.ImageNice9Layout_nice9_tipBgColor){
+        if (attr == R.styleable.ImageNice9Layout_nice9_tipBgColor) {
             setTipBgColor(typedArray.getColor(attr, Color.parseColor("#40000000")));
         }
-        if (attr == R.styleable.ImageNice9Layout_nice9_tipBgDrawable){
+        if (attr == R.styleable.ImageNice9Layout_nice9_tipBgDrawable) {
             setTipBgDrawable(typedArray.getDrawable(attr));
         }
     }
 
-    public void setTipBgDrawable(Drawable tipBgDrawable){
+    /**
+     * 提示文字背景
+     **/
+    public void setTipBgDrawable(Drawable tipBgDrawable) {
         mTip.setBackground(tipBgDrawable);
     }
 
+    /**
+     * 提示文字颜色
+     **/
     public void setTipColor(int tipBgColor) {
         mTip.setTextColor(tipBgColor);
     }
 
-
+    /**
+     * 提示背景颜色
+     **/
     public void setTipBgColor(int tipBgColor) {
         mTip.setBackgroundColor(tipBgColor);
     }
 
-
-    public void setTipText(String string){
+    /**
+     * 提示文字
+     **/
+    public void setTipText(String string) {
         mTip.setText(string);
     }
 
-    public void setTipText(@StringRes int string){
+    public void setTipText(@StringRes int string) {
         setTipText(getResources().getString(string));
     }
 
@@ -229,6 +240,9 @@ public class ImageNice9Layout extends LinearLayout implements MyItemTouchCallbac
         mMulitVAdapter.setItemDelegate(itemDelegate);
     }
 
+    /**
+     * 设置是否可以拖拽
+     **/
     public void setCanDrag(boolean canDrag) {
         this.canDrag = canDrag;
     }
@@ -350,8 +364,11 @@ public class ImageNice9Layout extends LinearLayout implements MyItemTouchCallbac
 
     }
 
-    public List<String> getAfterPicList(){
-       return mMulitVAdapter.getPictures();
+    /**
+     * 获取更改后的图片列表
+     **/
+    public List<String> getAfterPicList() {
+        return mMulitVAdapter.getPictures();
     }
 
     @Override
@@ -360,8 +377,7 @@ public class ImageNice9Layout extends LinearLayout implements MyItemTouchCallbac
     }
 
 
-
-    public interface ItemDelegate{
+    public interface ItemDelegate {
         void onItemClick(int position);
     }
 

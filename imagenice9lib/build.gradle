@@ -32,7 +32,7 @@ def siteUrl = 'https://github.com/wobiancao/ImageNice9Layout'
 //添加
 publish {
     userOrg = 'a12a15a05'
-    groupId = 'com.wobiancao'
+    groupId = 'wobiancao'
     artifactId = 'ImageNice9Layout'
     publishVersion = APP_VERSION_NAME
     desc = 'Android Like Nice 9_Image Layout'
