@@ -98,27 +98,67 @@ RecyclerView + GridLayoutManager设置spanSize + ItemTouchHelper 一波带走；
 	
    app:nice9_candrag="false"//是否支持拖拽，默认false`
 	 
-3.Item点击接口:
+`新增属性`
+```
+<attr name="nice9_tipText" format="reference|string"/>//提示文字
 
-`mImageNice9Layout.setItemDelegate(new ImageNice9Layout.ItemDelegate());`
+ <attr name="nice9_tipColor" format="reference|color"/>//提示文字颜色
+ 
+ <attr name="nice9_tipBgColor" format="reference|color"/>//提示文字背景色
+ 
+ <attr name="nice9_tipBgDrawable" format="reference"/>//提示文字背景图
+ ```
 
-4.使用，直接xml布局就行：
+3.使用，直接xml布局就行：
 
-  ` <wobiancao.nice9.lib.ImageNice9Layout
-  
+   ```<wobiancao.nice9.lib.ImageNice9Layout
         android:id="@+id/item_nice9_image"
-	
         android:orientation="vertical"
-	
         android:layout_width="match_parent"
-	
         android:layout_height="wrap_content"
-	
         android:layout_marginTop="8dp"
-	
         app:nice9_itemMargin="5dp"
-	
-        app:nice9_candrag="false"/>`
+        app:nice9_candrag="false"/>```
+4.可以公布的情报
+```
+/**
+     * 提示文字背景
+     **/
+    public void setTipBgDrawable(Drawable tipBgDrawable) {
+        mTip.setBackground(tipBgDrawable);
+    }
+
+    /**
+     * 提示文字颜色
+     **/
+    public void setTipColor(int tipBgColor) {
+        mTip.setTextColor(tipBgColor);
+    }
+
+    /**
+     * 提示背景颜色
+     **/
+    public void setTipBgColor(int tipBgColor) {
+        mTip.setBackgroundColor(tipBgColor);
+    }
+
+    /**
+     * 提示文字
+     **/
+    public void setTipText(String string) {
+        mTip.setText(string);
+    }
+
+    public void setTipText(@StringRes int string) {
+        setTipText(getResources().getString(string));
+    }
+  /**
+     * 获取更改后的图片列表
+     **/
+    public List<String> getAfterPicList() {
+        return mMulitVAdapter.getPictures();
+    }
+```
 				
 
 
