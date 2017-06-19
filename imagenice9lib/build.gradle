@@ -1,5 +1,7 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'//添加
+apply plugin: 'com.github.dcendents.android-maven'//需添加的
+apply plugin: 'com.jfrog.bintray'//需添加的
+version = "1.0.1"
 android {
     compileSdkVersion ANDROID_BUILD_SDK_VERSION as int
     buildToolsVersion ANDROID_BUILD_TOOLS_VERSION
@@ -29,14 +31,73 @@ dependencies {
 }
 
 def siteUrl = 'https://github.com/wobiancao/ImageNice9Layout'
-//添加
-publish {
-    userOrg = 'a12a15a05'
-    groupId = 'wobiancao'
-    artifactId = 'ImageNice9Layout'
-    publishVersion = APP_VERSION_NAME
-    desc = 'Android Like Nice 9_Image Layout'
-    website = siteUrl
+def gitUrl = 'git@github.com:wobiancao/ImageNice9Layout.git'
+group = "com.wobiancao"
+install {
+    repositories.mavenInstaller {
+        // This generates POM.xml with proper parameters
+        pom {
+            project {
+                packaging 'aar'
+                // Add your description here
+                description 'Like Nice Image 9Layout'
+                name 'ImageNice9Layout'  // 可默认，项目描述
+                url siteUrl
+                // Set your license
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer { //  可默认，开发者信息
+                        id 'a12a15a05'
+                        name 'wobiancao'
+                        email 'a420245103@gmail.com'
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+}
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+task javadoc(type: Javadoc) {
+    options.encoding = 'UTF-8'
+    source = 'src/main/java'
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+Properties properties = new Properties()
+// 加载本地配置
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+    configurations = ['archives']
+    pkg {
+        repo = "maven"  //发布到Bintray的那个仓库里，默认账户有四个库，我们这里上传到maven库
+        name = "imagenice9lib"  //需更改，这个名字就是你在Bintray上创建Package的名字，这里会查询，如果此包不存在就会创建一个。
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = ["Apache-2.0"]
+        publish = true
+    }
 }
 
 
