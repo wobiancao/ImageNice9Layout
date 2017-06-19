@@ -111,17 +111,18 @@ RecyclerView + GridLayoutManager设置spanSize + ItemTouchHelper 一波带走；
 
 3.使用，直接xml布局就行：
 
-   ```<wobiancao.nice9.lib.ImageNice9Layout
+   `<wobiancao.nice9.lib.ImageNice9Layout
         android:id="@+id/item_nice9_image"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         app:nice9_itemMargin="5dp"
-        app:nice9_candrag="false"/>```
+        app:nice9_candrag="false"/>`
+	
 4.可以公布的情报
-```
-/**
+
+```/**
      * 提示文字背景
      **/
     public void setTipBgDrawable(Drawable tipBgDrawable) {
@@ -158,7 +159,7 @@ RecyclerView + GridLayoutManager设置spanSize + ItemTouchHelper 一波带走；
     public List<String> getAfterPicList() {
         return mMulitVAdapter.getPictures();
     }
-```
+    ```
 				
 
 
