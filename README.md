@@ -3,8 +3,7 @@
 ![](https://img.shields.io/twitter/url/https/github.com/wobiancao/ImageNice9Layout.svg?style=social
 )
 
-写在开头：
--------
+>写在开头：
 
 为什么要实现这么个功能，当然不是我闲得慌，当然是产品的需求。身为码农你只能想方设法去实现，即使留给你的时间已经不多了，想起一句话：这个需求很简单，怎么实现我不管，月底上线
 
@@ -118,18 +117,15 @@ ANDROID_BUILD_SDK_VERSION=25//compileSdkVersion
   app:nice9_candrag="false"//是否支持拖拽，默认false
    ```
 	 
-`新增属性`
+#新增属性
 
-```
-
-<attr name="nice9_tipText" format="reference|string"/>//提示文字
+```<attr name="nice9_tipText" format="reference|string"/>//提示文字
 
  <attr name="nice9_tipColor" format="reference|color"/>//提示文字颜色
  
  <attr name="nice9_tipBgColor" format="reference|color"/>//提示文字背景色
  
  <attr name="nice9_tipBgDrawable" format="reference"/>//提示文字背景图
- 
  ```
 
 3.使用，直接xml布局就行：
@@ -144,10 +140,10 @@ ANDROID_BUILD_SDK_VERSION=25//compileSdkVersion
         app:nice9_itemMargin="5dp"
         app:nice9_candrag="false"/>
 	```
-	
 4.可以公布的情报
 
-```/**
+```
+/**
      * 提示文字背景
      **/
     public void setTipBgDrawable(Drawable tipBgDrawable) {
@@ -184,7 +180,8 @@ ANDROID_BUILD_SDK_VERSION=25//compileSdkVersion
     public List<String> getAfterPicList() {
         return mMulitVAdapter.getPictures();
     }
-    ```
+    
+  ```
 				
 
 
@@ -203,8 +200,11 @@ ANDROID_BUILD_SDK_VERSION=25//compileSdkVersion
 
 [glide](https://github.com/bumptech/glide)
 
+
+
  License
-  -------
+ -------
+ 
 
       Copyright 2017 Adrián García Lomas
 
