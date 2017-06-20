@@ -179,20 +179,20 @@ ANDROID_BUILD_SDK_VERSION=25//compileSdkVersion
 				
 
 
-![简书地址](http://www.jianshu.com/p/0ea96b952170)
+[简书地址](http://www.jianshu.com/p/0ea96b952170)
 
 如果觉得本文或本库对您有所帮助，就点个star吧？
-![体验apk](https://fir.im/nice9)
+[体验apk](https://fir.im/nice9)
 
 ![emmm.png](http://upload-images.jianshu.io/upload_images/1216032-512efea90ab7705b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 >感谢
 
-![vlayout](https://github.com/alibaba/vlayout)
+[vlayout](https://github.com/alibaba/vlayout)
 
-![pixabay](https://pixabay.com/)
+[pixabay](https://pixabay.com/)
 
-![glide](https://github.com/bumptech/glide)
+[glide](https://github.com/bumptech/glide)
 
 
 
