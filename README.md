@@ -92,14 +92,30 @@ RecyclerView + GridLayoutManager设置spanSize + ItemTouchHelper 一波带走；
 
 1.git clone 或下载本控件，修改响应版本然后依赖
   `compile project(':imagenice9lib')`
-	
+  
+或者远程依赖
+
+```
+compile 'com.wobiancao:imagenice9lib:1.0.1'
+需要配置本地gradle.properties文件
+VLAYOUT_VERSION = 1.0.6//vlayout版本号
+GLIDE_VERSION = 3.7.0//glide版本号
+ANDROID_BUILD_MIN_SDK_VERSION=16//minSdkVersion
+ANDROID_BUILD_TARGET_SDK_VERSION=23//targetSdkVersion
+ANDROID_BUILD_TOOLS_VERSION=25.0.2//buildToolsVersion
+ANDROID_BUILD_SDK_VERSION=25//compileSdkVersion
+```
 2.属性：
-  `app:nice9_itemMargin="5dp"//每个图片之间的间距
-	
-   app:nice9_candrag="false"//是否支持拖拽，默认false`
+
+```
+  app:nice9_itemMargin="5dp"//每个图片之间的间距
+  app:nice9_candrag="false"//是否支持拖拽，默认false
+   ```
 	 
 `新增属性`
+
 ```
+
 <attr name="nice9_tipText" format="reference|string"/>//提示文字
 
  <attr name="nice9_tipColor" format="reference|color"/>//提示文字颜色
@@ -107,18 +123,21 @@ RecyclerView + GridLayoutManager设置spanSize + ItemTouchHelper 一波带走；
  <attr name="nice9_tipBgColor" format="reference|color"/>//提示文字背景色
  
  <attr name="nice9_tipBgDrawable" format="reference"/>//提示文字背景图
+ 
  ```
 
 3.使用，直接xml布局就行：
 
-   `<wobiancao.nice9.lib.ImageNice9Layout
+   ```
+   <wobiancao.nice9.lib.ImageNice9Layout
         android:id="@+id/item_nice9_image"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         app:nice9_itemMargin="5dp"
-        app:nice9_candrag="false"/>`
+        app:nice9_candrag="false"/>
+	```
 	
 4.可以公布的情报
 
