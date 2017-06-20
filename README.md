@@ -1,4 +1,10 @@
->写在开头：
+[ ![Download](https://api.bintray.com/packages/a12a15a05/maven/imagenice9lib/images/download.svg) ](https://bintray.com/a12a15a05/maven/imagenice9lib/_latestVersion)
+![](https://img.shields.io/badge/language-android-green.svg)	![](https://img.shields.io/badge/license-Apache2.0-000000.svg)	
+![](https://img.shields.io/twitter/url/https/github.com/wobiancao/ImageNice9Layout.svg?style=social
+)
+
+写在开头：
+-------
 
 为什么要实现这么个功能，当然不是我闲得慌，当然是产品的需求。身为码农你只能想方设法去实现，即使留给你的时间已经不多了，想起一句话：这个需求很简单，怎么实现我不管，月底上线
 
@@ -196,3 +202,21 @@ ANDROID_BUILD_SDK_VERSION=25//compileSdkVersion
 [pixabay](https://pixabay.com/)
 
 [glide](https://github.com/bumptech/glide)
+
+ License
+  -------
+
+      Copyright 2017 Adrián García Lomas
+
+      Licensed under the Apache License, Version 2.0 (the "License");
+      you may not use this file except in compliance with the License.
+      You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+      Unless required by applicable law or agreed to in writing, software
+      distributed under the License is distributed on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+      See the License for the specific language governing permissions and
+      limitations under the License.
+
