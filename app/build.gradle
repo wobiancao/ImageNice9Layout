@@ -29,5 +29,5 @@ dependencies {
     })
     compile "com.android.support:appcompat-v7:${SUPPORT_VERSION}"
     testCompile "junit:junit:${JUNIT_VERSION}"
-    compile project(':imagenice9lib')
+    compile 'com.wobiancao:imagenice9lib:1.0.1'
 }
